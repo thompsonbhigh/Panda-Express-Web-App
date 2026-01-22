@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="newCashier.js"></script>
+    <link rel="stylesheet" href="/styles/newCashier.css">
+    <title>Cashier Items</title>
+</head>
+
+<header>
+    <div class="submit-container">
+        <form action="../newCashier/cancel" method="POST">
+            <button class="submit-button">Cancel Order</button>
+        </form>
+    </div>
+</header>
+
+<body>
+    <% if (size.Size != 'Appetizer' && size.Size != 'Drink') { %>
+        <h2>Entrees</h2>
+        <div class="container-items">
+            <% items.items.forEach(item => { %>
+                <% if ((item.category == 'Entree' || item.category == 'Premium Entree') && item.menuitem_name != 'EMPTY') { %>
+                <form action="../newCashier/trackItem" method="POST">
+                    <button class="item-button" type="submit" name="itemID" value="<%=item.menuitem_id%>"><%= item.menuitem_name %></button>
+                </form>
+                <% } %>
+            <% }); %>
+        </div>
+    <% } %>
+
+    <% if (size.Size != 'Appetizer' && size.Size != 'Drink') { %>
+        <h2>Sides</h2>
+        <div class="container-items">
+            <% items.items.forEach(item => { %>
+                <% if (item.category == 'Side') { %>
+                <form action="../newCashier/trackItem" method="POST">
+                    <button class="item-button" type="submit" name="itemID" value="<%=item.menuitem_id%>"><%= item.menuitem_name %></button>
+                </form>
+                <% } %>
+            <% }); %>
+        </div>
+    <% } %>
+
+    <% if (size.Size == 'Appetizer') { %>
+        <h2>Appetizers</h2>
+        <div class="container-items">
+            <% items.items.forEach(item => { %>
+                <% if (item.category == 'Appetizer') { %>
+                <form action="../newCashier/trackItem" method="POST">
+                    <button class="item-button" type="submit" name="itemID" value="<%=item.menuitem_id%>"><%= item.menuitem_name %></button>
+                </form>
+                <% } %>
+            <% }); %>
+        </div>
+    <% } %>
+
+    <% if (size.Size == 'Drink') { %>
+        <h2>Drinks</h2>
+        <div class="container-items">
+            <% items.items.forEach(item => { %>
+                <% if (item.category == 'Drink') { %>
+                <form action="../newCashier/trackItem" method="POST">
+                    <button class="item-button" type="submit" name="itemID" value="<%=item.menuitem_id%>"><%= item.menuitem_name %></button>
+                </form>
+                <% } %>
+            <% }); %>
+        </div>
+    <% } %>
+    
+    <div class="footer-container">
+        <%- include('cashierList.ejs') %>
+
+        <div class="submit-container">
+            <form action="../newCashier/submitOrder" method="POST">
+                <button class="submit-button">Submit Order</button>
+            </form>
+            <form action="../newCashier/back" method="POST">
+                <button class="submit-button">Back</button>
+            </form>
+            <h2><strong>Total: </strong>$<%= price %></h2>
+        </div>
+
+    </div>
+</body>
+</html>

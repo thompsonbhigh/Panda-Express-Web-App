@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Items</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/drinks.css">
+    <link rel="stylesheet" href="/styles/start.css"> 
+    <script src="/functions/kiosk/menu-items.js" defer></script>
+    <script src="/functions/kiosk/viewBag.js" defer></script>
+    <script src="/functions/kiosk/requestHelp.js" defer></script>
+    <div id="page-reveal" class="transition-overlay enter-mode"></div>
+    <div id="transition-overlay" class="transition-overlay exit-mode"></div>
+        <script>
+        window.mealType = "<%= mealType %>";
+        window.selectionLimits = {
+            "Drink" : [1,1]
+        };
+    </script>
+</head>
+<body>
+    <div class="header">
+        Menu - <%=mealType %>
+    </div>
+    <div class="container"> 
+        <h1>Drinks</h1>    
+        <div class="menu-grid">
+        <% if (entreeNames && entreeNames.length > 0) { %>
+            <% entreeNames.forEach(function(name) { %>
+                <% if ((name.category === "Drink") && name.menuitem_name !== "EMPTY") { %>
+                    
+                    <% let imgName = name.menuitem_name.replace(/\s+/g, '') + ".avif"; %>
+
+                    <button 
+                        class="menu-item" 
+                        data-id="<%= name.menuitem_id %>"
+                        data-category="<%= name.category %>"
+                        data-name="<%= name.menuitem_name %>"
+                        onclick="selectItem(this)">
+                        
+                        <img src="/images/<%= imgName %>" 
+                             alt="<%= name.menuitem_name %>"
+                             onerror="this.src='/images/bowl.avif';">
+                        
+                        <span><%= name.menuitem_name %></span>
+                        <span class="calorie-text"><%= name.calories %> Cal</span>
+                    </button>
+
+                <% } %>
+            <% }); %>
+        <% } %>
+        </div>
+    </div>
+    
+    <button class="proceed-button" onclick="proceed()"><Strong>Proceed</Strong></button>
+    <button class="view-bag-button" onclick="viewBag()"><Strong>View Bag</Strong></button>
+    <button class="back-button" onclick="goBack()"><Strong>Back</Strong></button>
+    <button class ="help-button" onclick="requestHelp()"><strong>Help</strong></button>
+
+
+    <script>
+        window.addEventListener('load', () => {
+            const revealOverlay = document.getElementById('page-reveal');
+            setTimeout(() => {
+                if (revealOverlay) {
+                    revealOverlay.classList.add('reveal');
+                }
+            }, 150); 
+        });
+    </script>
+
+    <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+            }
+        </script>
+    
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html> 

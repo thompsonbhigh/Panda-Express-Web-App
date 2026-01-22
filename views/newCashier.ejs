@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="newCashier.js"></script>
+    <link rel="stylesheet" href="/styles/newCashier.css">
+    <title>New Cashier</title>
+</head>
+
+<header>
+    <div class="submit-container">
+        <form action="../newCashier/cancel" method="POST">
+            <button class="submit-button">Cancel Order</button>
+        </form>
+    </div>
+</header>
+
+<body>
+    <div class="container">
+        <% sizes.sizes.forEach(size => { %>
+            <% if (size.size == 'Side') { %>
+            <% } else { %>
+                <form action="../newCashier/sizes" method="POST">
+                    <button class="size-button" type="submit" name="Size" value="<%= size.size %>"><%= size.size %></button>
+                </form>
+            <% } %>
+        <% }); %>
+    </div>
+    
+    <div class="footer-container">
+        <%- include('cashierList.ejs') %>
+
+        <div class="submit-container">
+            <form action="../newCashier/submitOrder" method="POST">
+                <button class="submit-button">Submit Order</button>
+            </form>
+            <h2><strong>Total: </strong>$<%= price %></h2>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen View</title>
+    <meta http-equiv="refresh" content="5">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/cashier.css">
+</head>
+<body>
+    <script src="/functions/employee/deleteItem.js" defer></script>
+    <div>
+        <a href="/">Back to Home</a>
+    </div>
+    <table id="kitchenTable">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% lowItem.forEach(low => { %>
+                <tr>
+                    <td><%=low.itemname %></td>
+                    <td>
+                        <button 
+                        class="kitchen-ready" 
+                        data-name="<%= low.itemname %>"
+                        onclick="deleteItem(this)">
+                            Ready
+                        </button>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

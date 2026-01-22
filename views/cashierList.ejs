@@ -1,0 +1,20 @@
+<footer>
+    <div class="itemlist">
+        <% entries.forEach(entry => { %>
+            <% if (entry.size != '') { %>
+                <div class="entry-card">
+                    <div class="size-cont">
+                        <h3><strong><%= entry.size %></strong> - <%= entry.price %></h3>
+                        <form action="../newCashier/delete" method="POST">
+                            <button class="delete-button" type="submit" name="index" value="<%= entry.index %>">X</button>
+                        </form>
+                    </div>
+                    <% entry.menuItems.forEach(item => { %>
+                        <p><%= item %></p>
+                    <% }); %>
+                </div>
+            <% } %>
+        <% }); %>
+        
+    </div>
+</footer>

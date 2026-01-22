@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Selection</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/item-selection.css">
+    <script src="/functions/kiosk/item-selection.js" defer></script>
+</head>
+<body>  
+    <div class="header">
+        Order <%=orderId%>
+    </div>
+
+    <div class="container">
+<div class="item-grid">
+    <button onclick="menuItem('Bowl')">
+        <img src="/images/bowl.avif" alt="Bowl">
+        <span>Bowl</span>
+    </button>
+    
+    <button onclick="menuItem('Plate')">
+        <img src="/images/plate.avif" alt="Plate">
+        <span>Plate</span>
+    </button>
+    
+    <button onclick="menuItem('Bigger Plate')">
+        <img src="/images/biggerplate.avif" alt="Bigger Plate">
+        <span>Bigger Plate</span>
+    </button>
+    
+    <button onclick="menuItem('Family')">
+        <img src="/images/familymeal.avif" alt="Family Meal">
+        <span>Family Meal</span>
+    </button>
+    
+    <button onclick="menuItem('Kids')">
+        <img src="/images/cubmeal.avif" alt="Cub Meal">
+        <span>Cub Meal</span>
+    </button>
+    
+    <button onclick="menuItem('Al a Carte')">
+        <img src="/images/alecarte.avif" alt="Al a Carte">
+        <span>Al a Carte</span>
+    </button>
+    
+    <button onclick="menuItem('Appetizer')">
+        <img src="/images/apps.avif" alt="Appetizers">
+        <span>Appetizers</span>
+    </button>
+    
+    <button onclick="menuItem('Drink')">
+        <img src="/images/Drink.avif" alt="Drinks">
+        <span>Drinks</span>
+    </button>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+    
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</div>
+
+    
+    </div>  
+
+</body> 

@@ -1,0 +1,8 @@
+    {
+      "source": {
+        "include": ["db.js", "server.js", "routes/", "public/functions/"],
+        "exclude": ["node_modules/", "myProject/lib/ignore.js"],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+      }
+    }

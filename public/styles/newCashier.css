@@ -1,0 +1,112 @@
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 95vh;
+}
+
+.start-button {
+    width: 70vh;
+    font-size: 10vh;
+    padding: 3vh;
+}
+
+.size-button {
+    width: 90%;
+    height: 20vh;
+    margin: 2vh;
+    font-size: 5vh;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    padding: 2vh;
+}
+
+.item-button {
+    width: 90%;
+    height: 10vh;
+    margin: 1vh;
+    font-size: 3vh;
+}
+
+.container-items {
+    display: grid;
+    grid-template-columns: 35vh 35vh 35vh 35vh 35vh;
+}
+
+h2 {
+    margin-bottom: -1vh;
+}
+
+.submit-container {
+    text-align: right;
+}
+
+.submit-button {
+    width: 50vh;
+    font-size: 5vh;
+}
+
+.itemlist {
+    display: flex;
+    justify-content: space-between;
+}
+
+.entry-card {
+    margin-left: 1vh;
+    margin-right: 1vh;
+    flex-grow: 4;
+}
+
+.itemlist p {
+    margin: 0.2vh;
+}
+
+.itemlist h3 {
+    margin-bottom: 0vh;
+    margin-top: 0vh;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 100vh auto;
+    }
+
+.refill-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 5vh;
+    height: 0vh
+}
+
+.refill-container select {
+    width: 20vh;
+    height: 5vh;
+    font-size: 4vh;
+}
+
+.refill-container option {
+    font-size: 3vh;
+}
+
+.refill-container input {
+    height: 5vh;
+}
+
+.size-cont {
+    display: flex;
+    margin-right: 1vh;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    font-size: 2.5vh;
+    color: red;
+    cursor: pointer;
+}

@@ -1,0 +1,70 @@
+body {
+    overflow: visible;
+}
+
+.container{
+    margin-top: 0%;
+    overflow-y: auto;
+    font-size: 3vh;
+    height: auto;
+}
+
+.slide{
+    margin-top: 0%;
+}
+
+.sub{
+    color:black;
+    font-size: 1.3vh;
+}
+
+h1{
+    text-transform: uppercase;
+    color: #d32f2f;
+    margin-top: 0%;
+}
+
+th{
+    color: #d32f2f;
+}
+
+td{
+    padding-right: 3vw;
+    padding-left: 3vw;
+}
+
+.size{
+    color: #d32f2f;
+    text-transform: uppercase;
+}
+
+.size-table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.a-la-carte{
+    padding-right: 3vw;
+    padding-left: 3vw;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background-color: #d32f2f;
+    padding: 15px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+} 

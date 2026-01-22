@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Selection</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/item-selection.css">
+    <link rel="stylesheet" href="/styles/start.css">
+    <script src="/functions/kiosk/item-selection.js" defer></script>
+    <script src="/functions/kiosk/viewBag.js" defer></script>
+    <script src="/functions/kiosk/requestHelp.js" defer></script>
+</head>
+<body>  
+    <div class="header">
+        <h1>Order <%=orderId%></h1>
+    </div>
+    <div id="page-reveal" class="transition-overlay enter-mode"></div>
+    <div id="transition-overlay" class="transition-overlay exit-mode"></div>
+    <div class  ="container">
+    <div class="item-grid">
+
+    <button onclick="menuItem('Bowl')">
+        <img src="/images/bowl.avif" alt="Bowl">
+        <span>Bowl</span>
+        <% if (prices && prices['Bowl']) { %>
+            <span class="price-tag">$<%= prices['Bowl'] %></span>
+        <% } %>
+    </button>
+    
+    <button onclick="menuItem('Plate')">
+        <img src="/images/plate.avif" alt="Plate">
+        <span>Plate</span>
+        <% if (prices && prices['Plate']) { %>
+            <span class="price-tag">$<%= prices['Plate'] %></span>
+        <% } %>
+    </button>
+    
+    <button onclick="menuItem('Bigger Plate')">
+        <img src="/images/biggerplate.avif" alt="Bigger Plate">
+        <span>Bigger Plate</span>
+        <% if (prices && prices['Bigger Plate']) { %>
+            <span class="price-tag">$<%= prices['Bigger Plate'] %></span>
+        <% } %>
+    </button>
+    
+    <button onclick="menuItem('Family')">
+        <img src="/images/familymeal.avif" alt="Family Meal">
+        <span>Family Meal</span>
+        <% if (prices && prices['Family']) { %>
+            <span class="price-tag">$<%= prices['Family'] %></span>
+        <% } %>
+    </button>
+    
+    <button onclick="menuItem('Kids')">
+        <img src="/images/cubmeal.avif" alt="Cub Meal">
+        <span>Cub Meal</span>
+        <% if (prices && prices['Kids']) { %>
+            <span class="price-tag">$<%= prices['Kids'] %></span>
+        <% } %>
+    </button>
+    
+<button onclick="menuItem('Al a Carte')">
+        <img src="/images/alecarte.avif" alt="Al a Carte">
+        <span>Al a Carte</span>
+        <span class="price-tag" style="font-size: 0.7em;">Price varies by selections</span>
+    </button>
+    
+    <button onclick="menuItem('Appetizer')">
+        <img src="/images/apps.avif" alt="Appetizers">
+        <span>Appetizers</span>
+        <% if (prices && prices['Appetizer']) { %>
+            <span class="price-tag">$<%= prices['Appetizer'] %></span>
+        <% } %>
+    </button>
+    
+    <button onclick="menuItem('Drink')">
+        <img src="/images/Drink.avif" alt="Drinks">
+        <span>Drinks</span>
+        <% if (prices && prices['Drink']) { %>
+            <span class="price-tag">$<%= prices['Drink'] %></span>
+        <% } %>
+    </button>
+
+    <script>
+        window.addEventListener('load', () => {
+            const revealOverlay = document.getElementById('page-reveal');
+            setTimeout(() => {
+                if (revealOverlay) {
+                    revealOverlay.classList.add('reveal');
+                }
+            }, 150); 
+        });
+    </script>
+        
+        </div>
+    </div>  
+ <button class="view-bag-button" onclick="viewBag()"><strong>View Bag</strong></button>
+<button class ="help-button" onclick="requestHelp()"><strong>Help</strong></button>
+
+<script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+    
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body> 

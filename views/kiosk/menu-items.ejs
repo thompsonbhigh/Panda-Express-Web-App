@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Items</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/menu-items.css">
+    <link rel="stylesheet" href="/styles/start.css">
+    
+    <script>
+        window.mealType = "<%= mealType %>";
+        window.selectionLimits = {
+            "Bowl" : [1,1],
+            "Plate" : [1,2],
+            "Bigger Plate" : [1, 3],
+            "Kids" : [1,1],
+            "Family" : [2,5]
+        };
+    </script>
+    <script src="/functions/kiosk/menu-items.js" defer></script>
+    <script src="/functions/kiosk/viewBag.js" defer></script>
+    <script src="/functions/kiosk/requestHelp.js" defer></script>
+</head>
+<body>
+    <div id="page-reveal" class="transition-overlay enter-mode"></div>
+    <div id="transition-overlay" class="transition-overlay exit-mode"></div>
+
+    <div class="header">
+        Menu - <%=mealType %>
+    </div>
+    
+    <div class="container">
+        <h1>Entrees</h1>    
+        <div class="menu-grid">
+        <% if (entreeNames && entreeNames.length > 0) { %>
+            <% entreeNames.forEach(function(name) { %>
+                <% if ((name.category === "Entree" || name.category === "Premium Entree") && name.menuitem_name !== "EMPTY") { %>
+                    
+                    <% let imgName = name.menuitem_name.replace(/\s+/g, '') + ".png"; %>
+
+                    <button 
+                        <%- name.in_stock ? 'class="menu-item"' : 'class="out-of-stock-overlay"' %> 
+                        data-id="<%= name.menuitem_id %>"
+                        data-category="<%= name.category %>"
+                        data-name="<%= name.full_name %>"
+                        <%= name.in_stock ? '' : 'disabled' %>
+                        onclick="selectItem(this)">
+
+                        <img src="/images/<%= imgName %>" 
+                             alt="Image of <%= name.full_name %>"
+                             onerror="this.src='/images/bowl.avif';">
+                       
+                        <span><%= name.full_name %></span>
+                        <span class="calorie-text">
+                            <% if (name.category === 'Premium Entree') { %> +1.50 | <% } %>
+                            <%= name.calories %> Cal
+                        </span>
+                        <span id="item-count" style="display:none"> 0 </span>
+                    
+
+                    </button>
+                    
+
+                <% } %>
+            <% }); %>
+        <% } %>
+        </div>
+
+        <h1>Sides</h1>
+        <div class="menu-grid">
+        <% if (entreeNames && entreeNames.length > 0) { %>
+            <% entreeNames.forEach(function(name) { %>
+                <% if (name.category === "Side") { %>
+                    
+                    <% let imgName = name.menuitem_name.replace(/\s+/g, '') + ".png"; %>
+
+                    <button 
+                        class="menu-item" 
+                        data-id="<%= name.menuitem_id %>"
+                        data-category="<%= name.category %>"
+                        data-name="<%= name.full_name %>"
+                        onclick="selectItem(this)">
+                        
+                        <img src="/images/<%= imgName %>" 
+                             alt="Image of <%= name.full_name %>"
+                             onerror="this.src='/images/bowl.avif';">
+                        
+                        <span><%= name.full_name %></span>
+                        <span class="calorie-text"><%= name.calories %> Cal</span>
+                        <span id="item-count" style="display:none"> 0 </span>
+                    </button>
+
+                <% } %>
+            <% }); %>
+        <% } %>
+        </div>
+
+    </div>
+
+    <button class="proceed-button" onclick="proceed()"><Strong>Proceed</Strong></button>
+    <button class="back-button" onclick="goBack()">
+        <Strong>Back</Strong>
+    </button>
+    <button class="view-bag-button" onclick="viewBag()"><Strong>View Bag</Strong></button>
+    <button class ="help-button" onclick="requestHelp()"><strong>Help</strong></button>
+
+
+    <div class="popup hidden" id="sizePopup">
+        <h2>Select Size</h2>
+        <div class="popup-content">
+            <button class="menu-item-button" onclick="selectSize('Small')">Small</button>
+            <button class="menu-item-button" onclick="selectSize('Medium')">Medium</button>
+            <button class="menu-item-button" onclick="selectSize('Large')">Large</button>
+        </div>
+    </div>
+    <script>
+    window.addEventListener('load', () => {
+        const revealOverlay = document.getElementById('page-reveal');
+        setTimeout(() => {
+            if (revealOverlay) {
+                revealOverlay.classList.add('reveal');
+            }
+        }, 150); 
+    });
+</script>
+
+    <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+            }
+        </script>
+    
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

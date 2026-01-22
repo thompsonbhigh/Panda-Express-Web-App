@@ -1,0 +1,52 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 30px;
+}
+h1 {
+    color: #333;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+#employee-verify-form {
+    display: inline-block;
+    text-align: left;
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button.verify-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button.verify-btn:hover {
+    background-color: #45a049;
+}
+
+button.cancel-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+}
+button.cancel-btn:hover {
+    background-color: #da190b;
+}

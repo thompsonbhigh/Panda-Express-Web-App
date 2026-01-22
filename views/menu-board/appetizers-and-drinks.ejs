@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appetizers and Drinks</title>
+    
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/menu-board.css">
+
+    <script src="/functions/api/currency-exchange.js" defer></script>
+</head>
+<body> 
+    <main>
+        <div class="container" style="height: 25vh; margin-bottom: 0vh">
+            <h1>Appetizers</h1>
+            <table class="menu-list">
+                <% if (entreeNames && entreeNames.length > 0) { %>
+                    <% entreeNames.forEach(function(name) { %>
+                        <% if (name.category === "Appetizer") { %>
+                            <tr>
+                                <td><%= name.full_name %></td>
+                                <td><%= name.calories %> cal</td>
+                                <td class="menu-price" data-base-price="<%= appPrice %>">
+                                    $<%= appPrice %>
+                                </td>
+                            </tr>
+                        <% } %>
+                    <% }); %>
+                <% } %>
+            </table>
+        </div>
+
+        <div class="container" style="height: 35vh; margin-top: 0vh">
+            <h1>Drinks</h1>
+            <table class="menu-list">
+                <% if (entreeNames && entreeNames.length > 0) { %>
+                    <% entreeNames.forEach(function(name) { %>
+                        <% if (name.category === "Drink") { %>
+                            <tr>
+                                <td><%= name.full_name %></td>
+                                <td><%= name.calories %> cal</td>
+                                <td class="menu-price" data-base-price="<%= drinkPrice %>">
+                                    $<%= drinkPrice %>
+                                </td>
+                            </tr>
+                        <% } %>
+                    <% }); %>
+                <% } %>
+            </table>
+        </div>
+
+        <div style="margin: 20px">
+            <label for="currency-selector">Currency:</label>
+            <select id="currency-selector">
+                <option value="USD" selected>USD</option>
+                <option value="EUR">EUR</option>
+                <option value="JPY">JPY</option>
+                <option value="GBP">GBP</option>
+                <option value="CAD">CAD</option>
+            </select>
+
+            <p id="exchange-rate">Loading exchange rate...</p>
+        </div>
+    </main>
+</body>
+</html>

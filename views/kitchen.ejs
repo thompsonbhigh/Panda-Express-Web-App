@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5">
+    <link rel="stylesheet" href="/styles/cashier.css">
+    <script src="kitchen.js" defer></script>
+    <script>
+        // window.addEventListener('DOMContentLoaded', () => {
+        // const table = document.querySelector('table');
+        // table.addEventListener('click', (e) => {
+        //     if (e.target.nodeName === 'BUTTON' && e.target.name === 'complete') {
+        //         fetch('/kitchen/mark-complete', {
+            //             method: 'POST',
+            //             headers: {
+                //                 'Content-Type': 'application/json'
+                //             },
+                //             body: JSON.stringify({ orderId: e.target.closest('tr').querySelector('td').innerText })
+        //         });
+        //         e.target.closest('tr').remove();
+        //     }
+        // });
+        // });
+        </script>
+    <title>Cashier</title>
+</head>
+<body>
+    <div>
+        <a href="/">Back to Home</a>
+    </div>
+    <div class="kitchengrid">
+        <div>
+            <table>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Items</th>
+                    <th>Size</th>
+                    <th></th>
+                </tr>
+                <% orders.orders.forEach(order => { %>
+                    <tr>
+                        <td><%= order.order_id %></td>
+                        <td><%= order.menuitem %></td>
+                        <td><%= order.size %></td>
+                        <td>
+                            <form action="../kitchen/mark-complete" method="POST">
+                                <button type="submit" value="<%= order.order_id %>" name="orderid">Completed</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </table>
+            </div>
+
+            <div>
+
+                <table>
+                    <tr>
+                        <th>Alerts</th>
+                        <th></th>
+                    </tr>
+                    <% if (verify) { %>
+                        <tr>
+                            <td>Verification needed!</td>
+                        </tr>
+                    <% } %>
+                    <% if (help) { %>
+                        <tr>
+                            <td>Help needed!</td>
+                            <td>
+                                <form action="../kitchen/help-complete" method="POST">
+                                    <button type="submit" value="Help" name="Help">Complete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% } %>
+                        </table>
+                    </div>
+        </div>
+</body>
+</html>

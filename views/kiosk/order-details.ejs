@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details - Panda Express</title>
+    
+    <link rel="stylesheet" href="/styles/style.css">    
+    <link rel="stylesheet" href="/styles/order-details.css">
+
+    <script src="/functions/kiosk/order-details.js" defer></script>
+    <script src="/functions/kiosk/requestHelp.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        Panda Express
+    </div>
+
+    <div class="container">
+        <h1>Your Order</h1>
+        <%if (order) { %>
+        <%order.entries.forEach(function(entry, index) { %>
+            <div class="order-entry">
+                <h2><%= entry.size %> - Price: $<%= entry.price.toFixed(2) %> 
+                    <button 
+                        class="edit-button" 
+                        data-category="<%= entry.menuItems[0].category %>"
+                        onclick="editEntry('<%= entry.entryId %>')">
+                        Edit
+                    </button> -  
+                    <button class="delete-button" onclick="deleteEntry('<%= entry.entryId %>')">Delete</button>
+                </h2>
+                <ul>
+                    <% entry.menuItems.forEach(function(item) { %>
+                        <li><%= item.name %>
+                        <% if (item.category === "Premium Entree") { %>
+                            +1.50
+                        <% } %>
+                        </li>
+                    <% }); %>
+                </ul>
+
+            </div>
+        <% }); %>
+        <% } %>
+        <% if (order.entries.length === 0) { %>
+            <p>No items in your order.</p>
+        <% } %>
+        <h2>Total Price: $<%= order.totalPrice.toFixed(2) %></h2>
+        <br>
+        <h3>Estimated wait time: <%= waitTime %> minutes</h3>
+    </div>
+
+    <button class ="order-more-button" onclick="orderMore()"><strong>Menu</strong></button>
+    <button id ="complete-order-button" class ="complete-order-button" onclick="confirmOrder()"><strong>Complete</strong></button>
+    <button class ="cancel-order-button" onclick="cancelOrder()"><strong>Cancel</strong></button>
+    <button class ="help-button" onclick="requestHelp()"><strong>Help</strong></button>
+
+    <div id="miss-anything-modal" class="modal">
+        <div class="modal-content">
+            <button class="close" onclick="closeMissAnythingModal()">X</button>
+            <h2>Did we miss anything?</h2>
+            <div class="modal-buttons">
+                <button onclick="gotoDrinks()">
+                    <img src="/images/Coke.avif" alt="Drink Image" class="modal-image">
+                    <span>Drinks</span></button>
+                <button onclick="gotoApps()">
+                    <img src="/images/apps.avif" alt="Appetizer Image" class="modal-image">
+                    <span>Appetizers</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+            }
+        </script>
+    
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

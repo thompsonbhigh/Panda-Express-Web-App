@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sides and A La Carte</title>
+
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/menu-board.css">
+    <script src="/functions/api/currency-exchange.js" defer></script>
+</head>
+<body>
+<main>
+    <div class="container" style="height: 30vh; margin-bottom: 0vh">
+        <h1>Sides</h1>
+        <table class="menu-list">
+            <% if (entreeNames && entreeNames.length > 0) { %>
+                <% entreeNames.forEach(function(name) { %>
+                    <% if (name.category === "Side") { %>
+                        <tr>
+                            <td><%= name.full_name %></td>
+                            <td><%= name.calories %> cal</td>
+                        </tr>
+                    <% } %>
+                <% }); %>
+            <% } %>
+        </table>
+    </div>
+
+    <div class="container" style="height: 40vh; margin-top: 0vh">
+        <h1>A La Carte Boxes</h1>
+        <table class="a-la-carte">
+            <tr>
+                <th></th>
+                <th>Entrees</th>
+                <th>Premium</th>
+                <th>Sides</th>
+            </tr>
+            <tr class="sub">
+                <td></td>
+                <td>150-1530 cal</td>
+                <td></td>
+                <td>130-1240 cal</td>
+            </tr>
+
+            <!-- Small -->
+            <tr>
+                <td>Sm</td>
+                <td>
+                    <span class="menu-price" data-base-price="<%= Number(prices['Small'] || 0) %>">
+                        $<%= Number(prices['Small'] || 0).toFixed(2) %>
+                    </span>
+                </td>
+                <td>
+                    <span class="premium-price" data-base-price="<%= Number(prices['Small'] || 0) + 1.50 %>">
+                        $<%= (Number(prices['Small'] || 0) + 1.50).toFixed(2) %>
+                    </span>
+                </td>
+                <td>
+                    <span class="menu-price" data-base-price="<%= Number(prices['Small-S'] || 0) %>">
+                        $<%= Number(prices['Small-S'] || 0).toFixed(2) %>
+                    </span>
+                </td>
+            </tr>
+
+            <!-- Medium -->
+            <tr>
+                <td>Med</td>
+                <td>
+                    <span class="menu-price" data-base-price="<%= Number(prices['Medium'] || 0) %>">
+                        $<%= Number(prices['Medium'] || 0).toFixed(2) %>
+                    </span>
+                </td>
+                <td>
+                    <span class="premium-price" data-base-price="<%= Number(prices['Medium'] || 0) + 3 %>">
+                        $<%= (Number(prices['Medium'] || 0) + 3).toFixed(2) %>
+                    </span>
+                </td>
+                <td>
+                    <span class="menu-price" data-base-price="<%= Number(prices['Med-S'] || 0) %>">
+                        $<%= Number(prices['Med-S'] || 0).toFixed(2) %>
+                    </span>
+                </td>
+            </tr>
+
+            <!-- Large -->
+            <tr>
+                <td>Lg</td>
+                <td>
+                    <span class="menu-price" data-base-price="<%= Number(prices['Large'] || 0) %>">
+                        $<%= Number(prices['Large'] || 0).toFixed(2) %>
+                    </span>
+                </td>
+                <td>
+                    <span class="premium-price" data-base-price="<%= Number(prices['Large'] || 0) + 4.50 %>">
+                        $<%= (Number(prices['Large'] || 0) + 4.50).toFixed(2) %>
+                    </span>
+                </td>
+                <td>
+                    <span class="menu-price" data-base-price="<%= Number(prices['Large-S'] || 0) %>">
+                        $<%= Number(prices['Large-S'] || 0).toFixed(2) %>
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="margin: 20px">
+        <label for="currency-selector">Currency:</label>
+        <select id="currency-selector">
+            <option value="USD" selected>USD</option>
+            <option value="EUR">EUR</option>
+            <option value="JPY">JPY</option>
+            <option value="GBP">GBP</option>
+            <option value="CAD">CAD</option>
+        </select>
+
+        <p id="exchange-rate">Loading exchange rate...</p>
+    </div>
+</main>
+</body>
+</html>

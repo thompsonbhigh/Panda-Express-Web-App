@@ -1,0 +1,196 @@
+/* 1. The Grid Layout */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Auto-fits columns */
+    gap: 20px;
+    padding: 10px 0;
+    width: 100%;
+}
+
+/* 2. The Card Button */
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+    width: 100%;
+    height: 160px; /* Fixed height for consistency */
+    
+    background-color: white;
+    border: 3px solid transparent; /* Transparent border for selection state later */
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s, border-color 0.2s;
+    position: relative;
+}
+
+/* 3. The Image */
+.menu-item img {
+    width: 100%;
+    height: 78%; /* Takes up top 70% */
+    object-fit: cover; /* Ensures it fills the box nicely */
+    background-color: #f9f9f9;
+}
+
+/* 4. The Text */
+.menu-item span {
+    width: 100%;
+    height: 22%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: #D12029; /* Panda Red */
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0 5px;
+}
+
+.menu-item.selected {
+    border-color: #D12029;
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+}
+
+.proceed-button {   
+  position: fixed;          
+  bottom: 20vh;             
+  right: 10vh;              
+  background-color: white;
+  border: 2px solid #D12029;
+  padding: 10px 20px;
+  font-size: 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  z-index: 1000;     
+  width: 200px;      
+}
+
+.proceed-button:hover {
+  background-color: #D12029;
+  color: white;
+}
+
+.item-count {
+    width: 100%;
+    height: 22%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: #D12029; /* Panda Red */
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.back-button {   
+  position: fixed;          
+  top: 15vh;             
+  left: 10vh;              
+  background-color: white;
+  border: 2px solid #D12029;
+  padding: 10px 20px;
+  font-size: 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  z-index: 1000;
+  width: 200px;      
+}
+.back-button:hover {
+  background-color: #D12029;
+  color: white;
+}
+
+/* Popup Styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid #D12029;
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 2000; /* Above other elements */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.popup-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.popup-content button {
+    border: 2px solid #D12029;
+    background-color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+.popup-content button:hover {
+    background-color: #D12029;
+    color: white;
+}
+
+.out-of-stock-overlay {
+    content: "Out of Stock";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+    width: 100%;
+    height: 160px; /* Fixed height for consistency */
+    
+    color: D12029;
+    font-weight: bold;
+    background-color: white;
+    border: 3px solid transparent; /* Transparent border for selection state later */
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+    
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s, border-color 0.2s;
+    position: relative;
+}
+
+.out-of-stock-overlay img {
+    width: 100%;
+    height: 78%; /* Takes up top 70% */
+    object-fit: cover; /* Ensures it fills the box nicely */
+    background-color: #f9f9f9;
+    opacity: 0.3;
+    z-index: 100;
+}
+.calorie-text {
+    font-size: 10px !important;
+    font-weight: normal;
+    color: #666;
+}
+.menu-item.selected .calorie-text {
+    display: none !important;
+}

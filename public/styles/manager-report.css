@@ -1,0 +1,63 @@
+.report-buttons {
+            width: 180px; /* Equal width and height for a circle */
+            height: 180px; /* Equal width and height for a circle */
+            border-radius: 50%; /* Makes the button circular */
+            background-color: #f44336; /* Red color, similar to Panda Express theme */
+            color: white;
+            border: none;
+            font-size: 20px; /* Slightly smaller font for circles */
+            font-weight: bold; /* Make text bold */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex; /* Use flex to center text inside the circle */
+            justify-content: center; /* Center text horizontally */
+            align-items: center; /* Center text vertically */
+            text-align: center; /* Fallback for text alignment */
+            line-height: 1.2; /* Adjust line height for multi-word text */
+        }
+
+.report-buttons:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.manager-page-container {
+    display: flex;
+    
+    /* 1. Horizontal Alignment */
+    flex-direction: row;        /* Arranges items horizontally */
+    flex-wrap: wrap;            /* Allows buttons to wrap to a new line if the screen is too narrow */
+    
+    /* 2. Horizontal Centering */
+    justify-content: center;    /* Centers the group of buttons horizontally */
+    
+    /* 3. Vertical Centering */
+    align-items: center;        /* Centers the buttons vertically relative to their container height */
+    min-height: calc(100vh - 100px); /* Makes the container fill the necessary vertical space (adjust 100px based on header/footer height) */
+    
+    /* Spacing */
+    gap: 30px;                  /* Space between the circular buttons */
+    padding: 20px;
+}
+
+/* Navigation Bar CSS */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background-color: #d32f2f;
+    padding: 15px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+} 

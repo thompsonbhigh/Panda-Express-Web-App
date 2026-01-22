@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generic Report (Responsive)</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/report.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>     
+<body>
+    <div class="header">
+        Manager Dashboard
+    </div>
+    
+    <script>
+        // Make sure the tag is NOT inside quotes and IS properly closed
+        const reportData = <%- JSON.stringify(reportItems || []) %>;
+    </script>
+    
+    <script src="/functions/ManagerReports/manager-reports.js" defer></script>
+    <script src="/functions/ManagerReports/product-usage-report.js" defer></script>
+
+    <div class="anchor-pane">
+        <button class="back-button" onclick="GoToManagerReports()">Back</button>
+    
+        <div id="usageChart" class="chart-container"> 
+            <h2 class="chart-title">Product Usage</h2>
+            
+            <% if (typeof reportItems !== 'undefined' && reportItems.length > 0) { %>
+                <canvas id="barChartCanvas"></canvas>
+            <% } else { %>
+                <canvas id="barChartCanvas" style="display: none;"></canvas>
+                <div id="chartMessage" style="text-align: center; color: #777; padding: 20px;">
+                    <%= typeof reportItems === 'undefined' ? "Select a date range and click 'Generate Report' to view data." : "No product usage data available for the selected date range." %>
+                </div>
+            <% } %>
+        </div>
+        
+        
+       <div class="date-input-group">
+            <form method="GET" action="/manager/managerReports/productUsageReport" class="date-form">
+                <label class="date-label">From:</label>
+                <input type="text" class="date-field" name="from_date" placeholder="YYYY-MM-DD" 
+                        value="<%= typeof from_date !== 'undefined' ? from_date : '' %>">
+    
+                <label class="date-label">To:</label>
+                <input type="text" class="date-field" name="to_date" placeholder="YYYY-MM-DD" 
+                        value="<%= typeof to_date !== 'undefined' ? to_date : '' %>">
+                
+                <button type="submit" class="generate-button">Generate Report</button> </form>
+        </div>
+    </div>
+    
+    <div class="footer">
+        Created by Fall 2025 Team 42.
+    </div>
+</body>
+</html>

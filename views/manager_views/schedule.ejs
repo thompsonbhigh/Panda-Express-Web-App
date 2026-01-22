@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Schedule</title>
+        <link rel="stylesheet" href="../styles/managerStyle.css">
+    </head>
+
+    <body>
+        <%- include("nav_manager.ejs") %> 
+
+        <h1>Schedule</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Employee ID</th>
+                    <th>Position</th>
+                    <th>Shift</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% schedule.forEach(item => { %> 
+                    <tr>
+                        <form action="/manager/schedule/update" method="POST">
+                            <td>
+                                <%= item.scheduledate.toISOString().slice(0,10) %>
+                            </td>
+                            <td> 
+                                <%= item.employeeid %>
+                            </td>
+                            <td>
+                                <input type="text" name="position" value="<%= item.position %>">
+                            </td>
+                            <td>
+                                <input type="text" name="shift" value="<%= item.shift %>">
+                            </td>
+                            <td>
+                                <input type="hidden" name="scheduledate" value="<%= item.scheduledate.toISOString().slice(0,10) %>">
+                                <input type="hidden" name="employeeid" value="<%= item.employeeid %>">
+                                <button type="submit"> Save </button>
+                            </td>
+                        </form>
+                        <td>
+                            <form action="/manager/schedule/delete" method="POST">
+                                <input type="hidden" name="employeeid" value="<%= item.employeeid %>">
+                                <input type="hidden" name="scheduledate" value="<%= item.scheduledate.toISOString().slice(0,10) %>">
+                                <button type="submit" class="delete-btn"> Delete </button>
+                            </form>
+                        </td>
+
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table> 
+
+        <form action="/manager/schedule/add" method="POST">
+            <label>Date:</label>
+            <input type="text" name="scheduledate">
+
+            <label>Employee ID:</label>
+            <input type="text" name="employeeid" required> 
+
+            <label>Position:</label>
+            <input type="text" name="position" required>
+
+            <label>Shift:</label>
+            <input type="text" name="shift" required>
+
+            <button type="submit">Add Item</button>
+        </form>
+
+
+        <div class="footer">
+            Created by Fall 2025 Team 42.
+        </div>
+    </body>
+</html>

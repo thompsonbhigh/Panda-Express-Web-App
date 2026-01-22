@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sizes</title>
+    
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/menu-board.css">
+
+    <!-- Currency exchange script -->
+    <script src="/functions/api/currency-exchange.js" defer></script>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <h1>Pick a Meal</h1>
+            <table class="size-table">
+                <tr>
+                    <td class="size">Bowl</td>
+                    <td class="menu-price" data-base-price="<%= prices['Bowl'] %>">
+                        $<%= prices["Bowl"] %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="sub">1 Entree, 1 Side</td>
+                </tr>
+
+                <tr>
+                    <td class="size">Plate</td>
+                    <td class="menu-price" data-base-price="<%= prices['Plate'] %>">
+                        $<%= prices["Plate"] %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="sub">2 Entrees, 1 Side</td>
+                </tr>
+
+                <tr>
+                    <td class="size">Bigger Plate</td>
+                    <td class="menu-price" data-base-price="<%= prices['Bigger Plate'] %>">
+                        $<%= prices["Bigger Plate"] %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="sub">3 Entrees, 1 Sides</td>
+                </tr>
+
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+
+                <tr>
+                    <td class="size">Family Meal</td>
+                    <td class="menu-price" data-base-price="<%= prices['Family'] %>">
+                        $<%= prices["Family"] %>
+                    </td>
+                </tr>
+                <tr class="sub"><td>3 Large Entrees, 2 Large Sides</td></tr>
+
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+
+                <tr>
+                    <td class="size">Cub Meal</td>
+                    <td class="menu-price" data-base-price="<%= prices['Kids'] %>">
+                        $<%= prices["Kids"] %>
+                    </td>
+                </tr>
+                <tr class="sub">
+                    <td>1 Jr. Entree, 1 Jr. Side, Fruit Side, & Bottled Water or Kid's Juice</td>
+                </tr>
+            </table>
+
+            <!-- Currency selector -->
+            <div style="margin: 20px">
+                <label for="currency-selector">Currency:</label>
+                <select id="currency-selector">
+                    <option value="USD" selected>USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="JPY">JPY</option>
+                    <option value="GBP">GBP</option>
+                    <option value="CAD">CAD</option>
+                </select>
+                <p id="exchange-rate">Loading exchange rate...</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

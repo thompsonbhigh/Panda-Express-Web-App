@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrees</title>
+    
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/menu-board.css">
+</head>
+<body>
+    <main>
+    <div class="container">
+        <h1>Entrees</h1>
+        <table class="menu-list">
+            <% if (entreeNames && entreeNames.length > 0) { %>
+                <% entreeNames.forEach(function(name) { %>
+                    <% if (name.category === "Entree" && name.menuitem_name !== "EMPTY") { %>
+                        <tr>
+                            <td><%= name.full_name %></td>
+                            <td><%= name.calories %> cal</td>
+                        </tr>
+                    <% } %>
+                    <% if (name.category === "Premium Entree" && name.menuitem_name !== "EMPTY") { %>
+                        <tr>
+                            <td>(P) <%= name.full_name %></td>
+                            <td><%= name.calories %> cal</td>
+                        </tr>
+                    <% } %>
+                <% }); %>
+            <% } %>
+        </table>
+
+        <div class="sub" style="text-align:center">
+            <p class="sub">(P) Additional Premium Charge:</p>
+            Entree: 
+            <span class="premium-price" data-base-price="1.50">$1.50</span>,
+            Jr. Entree:
+            <span class="premium-price" data-base-price="1.00">$1.00</span>,
+            Family Meal Entree:
+            <span class="premium-price" data-base-price="4.50">$4.50</span>
+        </div>
+    </div>
+    </main>
+</body>
+</html>

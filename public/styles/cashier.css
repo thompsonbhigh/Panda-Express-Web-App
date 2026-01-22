@@ -1,0 +1,33 @@
+th {
+    background-color: red;
+    color: white;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    font-size: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.kitchengrid {
+    display: grid;
+    grid-template-columns: 140vh 40vh;
+}

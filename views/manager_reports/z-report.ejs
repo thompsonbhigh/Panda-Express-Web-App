@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generic Report (Responsive)</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/report.css">
+    <script src="/functions/ManagerReports/manager-reports.js" defer></script>
+</head>     
+<body>
+    <div class="header">
+        Manager Dashboard
+    </div>
+
+    <div class="anchor-pane">
+        <button class="back-button" onclick="GoToManagerReports()">Back</button>
+    
+        <div class="report-table-container"> <h3>Z Report Data</h3> <div class="report-table-scroll"> <table class="data-report-table"> <thead>
+                        <tr>
+                            <th style="width: 50%;">Hours</th> <th style="width: 50%;">Quantity</th> </tr>
+                    </thead>
+                    <tbody>
+                        <% if (typeof reportItems !== 'undefined' && reportItems.length > 0) { %>
+                            <% reportItems.forEach(item => { %>
+                                <tr>
+                                    <td><%= item.itemName %></td>
+                                    <td><%= item.qty %></td>
+                                </tr>
+                            <% }); %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="2" style="text-align: center;">No data available for this period.</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+    
+        <div class="date-input-group">
+                <button type="submit" class="generate-button" onclick="SetZReportTime()">Generate Report</button>
+        </div>
+    </div>
+    
+        <div class="footer">
+            Created by Fall 2025 Team 42.
+        </div>
+</body>
+</html>

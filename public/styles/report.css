@@ -1,0 +1,190 @@
+/* Fix 1 */
+body { overflow: auto !important; }
+
+/* Fix 2 (recommended) */
+.footer { position: static; }
+
+/* Anchor Pane - Main content wrapper, centers content on larger screens */
+.anchor-pane {
+    max-width: 900px; /* Limit overall width */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Back Button styling */
+.back-button {
+    background-color: #6c757d; /* Gray color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+/* Report Table Container */
+.report-table-container { 
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #fff;
+}
+
+.report-table-container h3 {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #d32f2f; /* Red accent line */
+    padding-bottom: 10px;
+}
+
+/* Scrollable area for the table */
+.report-table-scroll { /* Changed from .sales-table-scroll */
+    overflow-x: auto; /* Allows horizontal scrolling for large tables on small screens */
+    -webkit-overflow-scrolling: touch; /* Improved scrolling on iOS */
+}
+
+/* Report Data Table styling */
+.data-report-table { /* Changed from .sales-report-table */
+    width: 100%;
+    border-collapse: collapse; /* Removes double borders */
+    min-width: 600px; /* Ensures table has minimum width for readability */
+}
+
+.data-report-table th, .data-report-table td {
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Table Header styling */
+.data-report-table thead tr {
+    background-color: #d32f2f; /* Red header background */
+    color: white;
+}
+
+.data-report-table th {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Table Body alternating row colors */
+.data-report-table tbody tr:nth-child(even) {
+    background-color: #f8f8f8; /* Light gray for even rows */
+}
+
+.data-report-table tbody tr:hover {
+    background-color: #f0f0f0; /* Slight highlight on hover */
+}
+
+/* Total Display */
+.total-display { /* Changed from .total-cost */
+    text-align: right;
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #333;
+    padding: 15px 0;
+    border-top: 2px solid #d32f2f;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Date Input Group and Form */
+.date-input-group {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.date-form {
+    display: flex;
+    flex-wrap: wrap; /* Allows elements to wrap on smaller screens */
+    gap: 10px; /* Space between elements */
+    align-items: center;
+}
+
+.date-label {
+    font-weight: bold;
+    color: #555;
+    flex-shrink: 0; /* Prevents label from shrinking */
+}
+
+.date-field {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    flex-grow: 1; /* Allows date fields to take up available space */
+    max-width: 180px;
+    box-sizing: border-box; /* Include padding/border in element's total width */
+}
+
+.generate-button {
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    flex-shrink: 0;
+}
+
+.generate-button:hover {
+    background-color: #45a049;
+}
+
+/* Chart Container */
+.chart-container {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    /* Removed inline margin-top: 20px; as it is now above the form */
+     max-height: 450px; /* Adjust this value as needed (e.g., 500px or 60vh) */
+    height: 450px; /* Recommended to set a fixed height for Chart.js */
+    
+    /* 2. Enable scrolling if the content (like a tall table) somehow overflows */
+    overflow-y: auto; 
+    
+    /* Optional: Ensure relative positioning for absolute child elements if needed */
+    position: relative; 
+}
+
+.chart-title {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+    border-bottom: 2px solid #d32f2f;
+    padding-bottom: 10px;
+}
+
+
+#barChartCanvas {
+    /* Ensure it acts like a block element */
+    display: block !important; 
+    
+    /* Let the chart logic handle the dimensions within the container */
+    width: 100% !important;
+    
+    /* CRITICAL: Set height to auto and let Chart.js fit within the 450px container height */
+    height: auto !important; 
+}

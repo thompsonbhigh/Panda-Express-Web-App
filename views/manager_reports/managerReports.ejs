@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Functions</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/manager-report.css">
+    <script src="/functions/ManagerReports/manager-reports.js" defer></script>
+</head>
+<body>
+    <%- include("../manager_views/nav_manager.ejs") %>
+
+    <div class="manager-page-container">
+        <button class="report-buttons" onclick="GoToSalesReport()">View Sales Report</button>
+        <button class="report-buttons" onclick="GoToXReport()">View X Report</button>
+        <button class="report-buttons" onclick="GoToZReport()">View Z Report</button>
+        <button class="report-buttons" onclick="GoToProductUsageReport()">View Product Usage</button>
+        <button class="report-buttons" onclick="GoToRestock()">View Restock</button>
+    </div>
+
+    <div class="footer">
+        Created by Fall 2025 Team 42.
+    </div>
+</body>
+</html>
